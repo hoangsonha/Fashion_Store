@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN PAGE</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script src="http://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<style>
+    .wrapper {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+
+    }
+    .demo1 {
+        background: black;
+
+    }
+    .demo1 td {
+        color: white;
+    }
+    .demo2 {
+        margin-top: 20px;
+        margin-left: 1350px;
+    }
+
+</style>
+<div class="h3" th:text="'Hello : ' + ${session.user}" ></div>
+<div class="demo2"><a class="text-decoration-none" th:href="@{/logout}"><h4>Đăng xuất</h4></a></div>
+<div class="wrapper">
+    <div><h1>Danh sách sản phẩm</h1></div></div>
+    <div class="h4 text-center" style="margin-top: 20px">
+    <a class="text-decoration-none" th:href="@{/admin/new}">Tạo mới sản phẩm</a></div>
+
+
+    <div style="margin-bottom: 30px; margin-top: 30px;" th:if="message3" class="h3 alert-success text-center">
+        [[${message3}]]
+    </div>
+
+<div>
+    <table class="table table-bordered" style="margin-top: 20px; flex-grow: 1;">
+        <thead class="demo1 h5">
+        <tr>
+            <td>ID</td>
+            <td>Tên sản phẩm</td>
+            <td>Năm sản xuất</td>
+            <td>Giá</td>
+            <td>Loại</td>
+            <td>Chi tiết</td>
+            <td>img</td>
+            <td>
+                Lựa chọn khác
+            </td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <th:block th:each="product : ${productList}">
+            <tr>
+                <td>[[${product.id}]]</td>
+                <td>[[${product.productName}]]</td>
+                <td>[[${product.productYear}]]</td>
+                <td>[[${product.price}]]</td>
+                <td>[[${product.kind}]]</td>
+                <td>[[${product.detail}]]</td>
+                <td>[[${product.img}]]</td>
+                <td>
+                    <a th:href="@{'/admin/edit/' + ${product.id}}" class="h3 p-3">Sửa</a>
+                    <a th:href="@{'/admin/delete/' + ${product.id}}" class="h3">Xoá</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

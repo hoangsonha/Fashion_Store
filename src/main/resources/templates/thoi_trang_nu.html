@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Thời trang nữ</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script src="http://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<style>
+  #backtop {
+    width: 50px;
+    height: 50px;
+    background: tomato;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    cursor: pointer;
+  }
+  #demoWeb {
+    position: relative;
+    margin-top: 70px;
+  }
+  .demo {
+    align-items: center;
+    max-width: 1500px;
+    margin-left: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    flex-grow: 1;
+    padding: 20px 20px 20px;
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0);
+    margin-top: 5px;
+  }
+  .list-unstyled {
+
+  }
+</style>
+
+
+<!-- BEGIN NAVBAR-->
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <img src="/image/products/logo.png" height="150"/>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse border-left" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a style="color: deepskyblue" class="h4 nav-link active mr-4" aria-current="page" th:href="@{/}"><i>Trang chủ</i></a>
+        </li>
+        <li class="nav-item">
+          <a style="color: aqua" class="h4 nav-link p-3 mr-2" th:href="@{/thoi_trang_nam}"><i><b>Thời trang nam</b></i></a>
+        </li>
+        <li class="nav-item">
+          <a style="color: deeppink" class="h4 nav-link p-3 mr-2" th:href="@{/thoi_trang_nu}"><i><b>Thời trang nữ</b></i></a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <form class="d-flex col-lg-6" th:action="@{/tim_kiem_nu}">
+      <input id="menu_search" name="keyword" class="form-control" type="search" placeholder=" Tìm kiếm sản phẩm " aria-label="Search" th:value="${valueKeyword}" required>
+      <button class="btn btn-outline-success" type="submit">Tìm</button>
+
+    </form>
+    <div>
+      <div style="display: inline-block" th:text="'( ' + ${totalProduct} + ' ) '"></div><a class="btn btn-outline-primary" style="background: orange" th:href="@{/cart}">Giỏ hàng</a>
+    </div>
+    <div>
+      <a th:href="@{/dang_nhap}" class="btn btn-primary ">Đăng nhập</a>
+      <a th:href="@{/dang_ki_tai_khoan}" class="btn btn-secondary">Đăng ký</a>
+    </div>
+  </div>
+</nav>
+
+<!-- END NAVBAR-->
+
+
+<!-- BEGIN Content-->
+
+<div class="demo text-center">
+  <i><b><h2>Danh mục nổi bật</h2></b></i>
+</div>
+
+<div th:if="message_key_3" class="h1 alert-light text-center" style="margin-top: 50px">[[${message_key_3}]]</div>
+
+<div id="demoWeb">
+
+  <form th:each="product : ${productList}" style="display: inline-block">
+    <div class="border-light card ml-5" style="width: 19.9rem;">
+      <a th:href="@{'/chi_tiet_san_pham/' + ${product.id}}"><img th:src="@{${'/image/' + product.img}}" class="card-img-top" alt=""></a>
+      <div class="card-body">
+        <a class="text-decoration-none" th:href="@{'/' + ${product.productName}}"><h5 class="text-dark">[[${product.productName}]]</h5></a>
+        <div class="row p-2">
+          <div class="h4 text-center"><span th:text="${#numbers.formatInteger(product.price, 3, 'POINT')} + ' VNĐ '"></span><a class="btn btn-outline-success" style="background: orange; margin-top: 20px;" th:href="@{'/addcart/' + ${product.id}}"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ hàng</a></div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<!-- END Content-->
+
+
+    <!-- BEGIN MENU -->
+
+
+
+    <!-- END MENU -->
+
+
+    <!-- BEGIN SLIDER-->
+
+
+    <!-- END SLIDER-->
+
+<div class="p-3"></div>
+
+<!-- BEGIN FOOTER-->
+
+
+<div class="row">
+  <div class="card text-white bg-primary mb-3 bg-dark" style="max-width: 23.9rem;">
+    <div class="h3 card-header text-center"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+    <div class="card-body">
+      <h5 class="card-title text-center"> Hoàn sản phẩm </h5>
+      <h5 class="card-text text-center"> 10 ngày đổi trả sản phẩm </h5>
+    </div>
+  </div>
+  <div class="card text-white bg-secondary mb-3 bg-dark p-2" style="max-width: 23.9rem;">
+    <div class="h3 card-heade text-center"><i class="fa-solid fa-truck-fast"></i></div>
+    <div class="card-body">
+      <h5 class="card-title text-center">Vận chuyển</h5>
+      <h5 class="card-text text-center">Đồng giá 0k toàn quốc</h5>
+    </div>
+  </div>
+  <div class="card text-white bg-secondary mb-3 bg-dark p-2" style="max-width: 23.9rem;">
+    <div class="h3 card-heade text-center"><i class="fa-solid fa-store"></i></div>
+    <div class="card-body">
+      <h5 class="card-title text-center">Hệ thống cửa hàng</h5>
+      <h5 class="card-text text-center">Chưa có cơ sở nào trên toàn quốc</h5>
+    </div>
+  </div>
+  <div class="card text-white bg-secondary mb-3 bg-dark p-2" style="max-width: 23.9rem;">
+    <div class="h3 card-heade text-center"><i class="fa-solid fa-phone"></i></div>
+    <div class="card-body">
+      <h5 class="card-title text-center">Hotline 1900 9999</h5>
+      <h5 class="card-text text-center">Làm việc tất cả các ngày trong tuần</h5>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row">
+
+  <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-center">
+    <div><h3><img src="/image/products/logo.png" height="250"/></h3></div>
+    <div class="h5 mb-2"><h5>Công ty 1 thành viên</h5></div>
+    <div class="h5 mb-2"><h5>Server VIP - Vũ trụ 10 - Sao Hoả</h5></div>
+    <div class="h5 mb-2"><h5>1900 9999</h5></div>
+    <div class="h5 mb-2"><h5>nguoisaohoa@saohoa.com</h5></div>
+  </div>
+
+
+  <div class="col-6 col-lg-2 offset-lg-1 mb-3  p-4 text-center">
+    <div class="row">
+      <div class="col-md-0">
+        <div class="p-2"><h5>Hỗ trợ khách hàng</h5></div>
+        <ul class="list-unstyled">
+          <li class="mb-2 p-1"><a href="/">Đăng kí tài khoản</a></li>
+          <li class="mb-2 p-1"><a href="/docs/5.3/">Đăng kí tài khoản</a></li>
+          <li class="mb-2 p-1"><a href="/docs/5.3/examples/">Chính sách giao hàng</a></li>
+          <li class="mb-2 p-1"><a href="https://icons.getbootstrap.com/">Chính sách đổi trả hàng</a></li>
+          <li class="mb-2 p-1"><a href="https://themes.getbootstrap.com/">Chính sách bảo hành</a></li>
+          <li class="mb-2 p-1"><a href="https://blog.getbootstrap.com/">Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+
+
+      <div class="col-6 col-lg-10 offset-lg-1 mb-3 p-4">
+        <h5>Kết nối với tôi</h5>
+        <ul class="list-unstyled">
+          <a><i class="h5 fa-brands fa-facebook"></i></a>
+          <a><i class="h5 fa-brands fa-twitter"></i></a>
+          <a><i class="h5 fa-brands fa-instagram"></i></a>
+          <a><i class="h5 fa-brands fa-tiktok"></i></a>
+          <a><i class="h5 fa-brands fa-youtube"></i></a>
+          <a><img src="/image/products/zaloicon.jpg" height="25"/></a>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-6 col-lg-2 offset-lg-1 text-center mb-3 p-4">
+    <div class="row">
+      <div class="col-lg-1">
+        <div class="item-link-download"><a class="chplay-link" href="https://play.google.com"><img src="/image/products/chplayicon.png" height="80" width="194"/></a></div>
+        <div class="item-link-download"><a class="apple-link" href="https://apps.apple.com"><img src="/image/products/appstoreicon.png" height="60" width="195"/></a></div>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-8 mb-10 p-2">
+        <div class="col-lg-5">
+          <div><img src="/image/products/QRtiger.png" height="150" width="150"/></div>
+        </div>
+      </div>
+      <div class="p-3">
+        <iframe width="325" height="190" src="/image/video/vi1.mp4" allow="autoplay;" allowfullscreen></iframe>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="container-fluid text-center"><h1><i><b>Thanks you for your coming my website</b></i></h1></div>
+<br>
+
+<!-- END FOOTER-->
+
+
+<div id="backtop">
+  <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+</body>
+
+<script>
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      if($(this).scrollTop()) {
+        $('#backtop').fadeIn();
+      } else {
+        $('#backtop').fadeOut();
+      }
+    });
+    $("#backtop").click(function () {
+      $('html, body').animate({scrollTop: 0}, 500);
+    });
+  });
+</script>
+
+</html>
