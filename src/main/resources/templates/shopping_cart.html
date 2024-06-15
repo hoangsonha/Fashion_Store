@@ -110,8 +110,8 @@
                 <td><span th:text="${#numbers.formatInteger(cart.product.price, 3, 'POINT')} + ' VNĐ '"></span></td>
 
                 <td>
-                    <input type="number" max="100" min="1" th:value="${cart.quantity}" name="quantity" style="width: 70px;">
-                    <button type="submit" th:href="@{/edit/cart/}">Lưu</button>
+                    <input class="quantity_product" type="number" max="100" min="1" th:value="${cart.quantity}" name="quantity" style="width: 70px;">
+                    <button id="save_quantity" type="submit" th:href="@{/edit/cart/}">Lưu</button>
                 </td>
                 <td>
                     <a class="btn btn-secondary" th:href="@{'/delete/' + ${cart.product.id}}">Xoá</a>
@@ -129,7 +129,7 @@
     </div>
     <div style="display: inline-block;">
     <a style="margin-left: 10px; color: deepskyblue; margin-bottom: 30px; margin-top: 30px; text-decoration: none" th:href="@{/}">Bấm để trở về trang mua sắm</a>
-    <button type="submit" class="btn btn-outline-success" style="margin-left: 930px; margin-bottom: 30px; margin-top: 30px" onclick="thanh_toan()">Thanh toán</button>
+    <button id="payment" type="submit" class="btn btn-outline-success" style="margin-left: 930px; margin-bottom: 30px; margin-top: 30px" onclick="thanh_toan()">Thanh toán</button>
     </div>
 </div>
 

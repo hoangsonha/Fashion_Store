@@ -127,23 +127,23 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label>Họ tên</label>
-                            <input type="text" class="form-control" th:field="*{name}" required maxlength="100" minlength="2">
+                            <input id="name_customer" type="text" class="form-control" th:field="*{name}" required maxlength="100" minlength="2">
                         </div>
                         <div class="col-md-12">
                             <label>Email</label>
-                            <input type="email" class="form-control" th:field="*{email}" required maxlength="100" minlength="2">
+                            <input id="email_customer" type="email" class="form-control" th:field="*{email}" required maxlength="100" minlength="2">
                         </div>
                         <div class="col-md-12">
                             <label>Địa chỉ</label>
-                            <input type="text" class="form-control" th:field="*{address}" required maxlength="2024" minlength="2">
+                            <input id="address_customer" type="text" class="form-control" th:field="*{address}" required maxlength="2024" minlength="2">
                         </div>
                         <div class="col-md-12">
                             <label>Điện thoại</label>
-                            <input type="text" class="form-control" th:field="*{phone}" required maxlength="20" minlength="7">
+                            <input id="phone_customer" type="text" class="form-control" th:field="*{phone}" required maxlength="20" minlength="7">
                         </div>
                         <div class="col-md-12">
                             <label>Ghi chú</label>
-                            <input type="text" class="form-control" th:field="*{notes}" required maxlength="2024" minlength="0">
+                            <input id="notes_customer" type="text" class="form-control" th:field="*{notes}" required maxlength="2024" minlength="0">
                         </div>
                     </div>
 
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" th:href="@{/bill/save}">Đặt
+                    <button id="submit_bill" type="submit" class="btn btn-primary btn-lg btn-block" th:href="@{/bill/save}">Đặt
                         hàng</button>
                 </div>
             </div>

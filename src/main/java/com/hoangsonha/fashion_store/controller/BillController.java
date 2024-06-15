@@ -7,11 +7,13 @@ import com.hoangsonha.fashion_store.service.ShoppingService;
 import com.hoangsonha.fashion_store.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collection;
@@ -41,7 +43,6 @@ public class BillController {
         }
     }
 
-
     @GetMapping("/hoan_tat_thanh_toan")
     public String thanhToanThanhCong(HttpSession httpSession) {
         if(httpSession.getAttribute("userLogin") != null) {
@@ -62,16 +63,17 @@ public class BillController {
             return "redirect:/thanh_toan";
         }
             if (billService.saveBill(bill) == 1) {
-
                 Collection<Shopping> cart = (Collection<Shopping>) httpSession.getAttribute("listCart");
-
                 billDetailProductService.addBillDetail(cart, bill.getEmail());
-
                 httpSession.removeAttribute("listCart");
             }
-
             return "redirect:/hoan_tat_thanh_toan";
         }
 
+    @GetMapping("/bill/delete/{id}")
+    public String deleteBill(Model model, RedirectAttributes redirectAttributes) {
+        model.addAttribute("Hello everyone");
+        return "login_ttnu";
+    }
 
 }
