@@ -14,7 +14,7 @@
     <name>Fashion Store</name>
     <description>Fashion Store</description>
     <properties>
-        <java.version>20</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -44,7 +44,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
+            <version>2.16.1</version>
         </dependency>
 
 
@@ -57,7 +57,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>3.0.0</version>
+            <version>3.7.1</version>
         </dependency>
 
         <dependency>
