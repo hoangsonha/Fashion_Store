@@ -105,7 +105,7 @@
                 <input type="hidden" name="id" th:value="${cart.product.id}">
                 <tr>
                 <td>[[${cart.product.id}]]</td>
-                <td><img th:src="@{${'/image/' + cart.product.img}}" style="width: 130px; height: 150px;"></td>
+                <td><img th:src="@{${'/image/products/' + cart.product.img}}" style="width: 130px; height: 150px;"></td>
                 <td>[[${cart.product.productName}]]</td>
                 <td><span th:text="${#numbers.formatInteger(cart.product.price, 3, 'POINT')} + ' VNĐ '"></span></td>
 
