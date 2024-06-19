@@ -104,6 +104,7 @@
                 <form th:action="@{/edit/cart}" method="post">
                 <input type="hidden" name="id" th:value="${cart.product.id}">
                 <tr>
+
                 <td>[[${cart.product.id}]]</td>
                 <td><img th:src="@{${'/image/products/' + cart.product.img}}" style="width: 130px; height: 150px;"></td>
                 <td>[[${cart.product.productName}]]</td>
