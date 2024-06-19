@@ -31,14 +31,12 @@ public class BillController {
         User user = (User) httpSession.getAttribute("userLogin");
         if(user == null) {
             model.addAttribute("bill", new Bill());
-
             return "thanh_toan";
         } else {
             bill.setName(user.getFirstName() + " " + user.getLastName());
             bill.setEmail(user.getEmail());
             bill.setPhone(user.getPhoneNumber());
             model.addAttribute("bill", bill);
-
             return "thanh_toan_user";
         }
     }
