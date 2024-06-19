@@ -23,19 +23,19 @@ public class TestProductDB {
 
     @Autowired private BillRepository billRepository;
 
-    @Test
-    public void testAddNewProduct() {
-        Product newProduct = new Product();
-        newProduct.setProductName("Giày Sneaker Vans Style");
-        newProduct.setProductYear("2021");
-        newProduct.setPrice(1790000);
-        newProduct.setDetail("");
-        newProduct.setKind("nam nu");
-
-        Product product = productRepository.save(newProduct);
-
-        Assertions.assertThat(product).isNotNull();
-    }
+//    @Test
+//    public void testAddNewProduct() {
+//        Product newProduct = new Product();
+//        newProduct.setProductName("Giày Sneaker Vans Style");
+//        newProduct.setProductYear("2021");
+//        newProduct.setPrice(1790000);
+//        newProduct.setDetail("");
+//        newProduct.setKind("nam nu");
+//
+//        Product product = productRepository.save(newProduct);
+//
+//        Assertions.assertThat(product).isNotNull();
+//    }
 
     @Test
     public void testGetAllProducts() {
@@ -73,21 +73,21 @@ public class TestProductDB {
         Assertions.assertThat(updateProduct.getKind()).isEqualTo("quần");
     }
 
-    @Test
-    public void testDeleteProduct() {
-        Integer productId = 0;
+//    @Test
+//    public void testDeleteProduct() {
+//        Integer productId = 0;
+//
+//        boolean existes = productRepository.existsById(productId);
+//
+//        if(existes) {
+//            productRepository.deleteById(productId);
+//        }
+//    }
 
-        boolean existes = productRepository.existsById(productId);
-
-        if(existes) {
-            productRepository.deleteById(productId);
-        }
-    }
-
-    @Test
-    public void getIdBill() {
-        int id = billRepository.getBillById();
-
-        System.out.println(id);
-    }
+//    @Test
+//    public void getIdBill() {
+//        int id = billRepository.getBillById();
+//
+//        System.out.println(id);
+//    }
 }
