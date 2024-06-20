@@ -204,7 +204,7 @@
 
   <form th:each="product : ${productList}" style="display: inline-block">
     <div class="border-light card ml-5" style="width: 19.9rem;">
-      <a th:href="@{'/chi_tiet_san_pham/' + ${product.id}}"><img th:src="@{${'/image/' + product.img}}" class="card-img-top" alt=""></a>
+      <a th:href="@{'/chi_tiet_san_pham/' + ${product.id}}"><img th:src="@{${'/image/products/' + product.img}}" class="card-img-top" alt=""></a>
       <div class="card-body">
         <a class="text-decoration-none" th:href="@{'/chi_tiet_san_pham/' + ${product.id}}"><h5 class="text-dark">[[${product.productName}]]</h5></a>
         <div class="row p-2">
