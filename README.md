@@ -1,3 +1,5 @@
+[![Build and deploy JAR app to Azure Web App - testngautomation](https://github.com/hoangsonha/Fashion_Store/actions/workflows/master_testngautomation.yml/badge.svg)](https://github.com/hoangsonha/Fashion_Store/actions/workflows/master_testngautomation.yml)
+
 # <h1 align="center">Dự án website shop bán quần áo thời trang <br> ( Fashion_Store )</h1>
 <br>
 
