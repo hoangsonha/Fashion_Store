@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:9.0.1
+    container_name: mysql
+    restart: always
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456789
+      MYSQL_DATABASE: web_ban_hang
+    ports:
+      - "3307:3306"
+
+  springboot:
+    build: .
+    container_name: fashion_springboot_app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DB: web_ban_hang
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456789
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:

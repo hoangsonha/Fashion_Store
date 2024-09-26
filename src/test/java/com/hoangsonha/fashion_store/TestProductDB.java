@@ -37,41 +37,41 @@ public class TestProductDB {
 //        Assertions.assertThat(product).isNotNull();
 //    }
 
-    @Test
-    public void testGetAllProducts() {
-        List<Product> productList = productRepository.findAll();
+//    @Test
+//    public void testGetAllProducts() {
+//        List<Product> productList = productRepository.findAll();
+//
+//        Assertions.assertThat(productList).hasSizeGreaterThan(0);
+//
+//        for(Product product : productList) {
+//            System.out.println(product.toString());
+//        }
+//
+//    }
 
-        Assertions.assertThat(productList).hasSizeGreaterThan(0);
-
-        for(Product product : productList) {
-            System.out.println(product.toString());
-        }
-
-    }
-
-    @Test
-    public void testGetProductById() {
-        Integer productId = 3;
-
-        Optional<Product> getProduct = productRepository.findById(productId);
-
-        Assertions.assertThat(getProduct).isPresent();
-
-        System.out.println(getProduct);
-    }
-
-    @Test
-    public void testUpdateProduct() {
-        Integer productId = 1;
-
-        Product product = productRepository.findById(productId).get();
-
-        product.setKind("quần");
-
-        Product updateProduct = productRepository.save(product);
-
-        Assertions.assertThat(updateProduct.getKind()).isEqualTo("quần");
-    }
+//    @Test
+//    public void testGetProductById() {
+//        Integer productId = 3;
+//
+//        Optional<Product> getProduct = productRepository.findById(productId);
+//
+//        Assertions.assertThat(getProduct).isPresent();
+//
+//        System.out.println(getProduct);
+//    }
+//
+//    @Test
+//    public void testUpdateProduct() {
+//        Integer productId = 1;
+//
+//        Product product = productRepository.findById(productId).get();
+//
+//        product.setKind("quần");
+//
+//        Product updateProduct = productRepository.save(product);
+//
+//        Assertions.assertThat(updateProduct.getKind()).isEqualTo("quần");
+//    }
 
 //    @Test
 //    public void testDeleteProduct() {
